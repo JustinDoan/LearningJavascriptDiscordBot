@@ -1,10 +1,13 @@
 const http = require('http')
-const exec = require('child_process').exec;
+const spawn = require('child_process').spawn;
 
-
+let bot = "";
 http.createServer(function (req, res) {
     req.on('data', function(chunk) {
-        exec("git pull && node index.js")
+        if (bot) {
+            bot.kill();
+        }
+        bot = spawn("git pull && node index.js")
     });
 
     res.end();
