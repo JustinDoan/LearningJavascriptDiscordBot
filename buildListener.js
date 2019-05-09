@@ -2,12 +2,17 @@ const http = require('http')
 const spawn = require('child_process').spawn;
 
 let bot = "";
+let git = "";
 http.createServer(function (req, res) {
     req.on('data', function(chunk) {
-        if (bot) {
+        if (bot !== "") {
             bot.kill();
         }
-        bot = spawn("git pull && node index.js")
+        git = spawn('git', ['pull'])
+        git.on('close', (code) => {
+            bot = spawn("node", ['index.js'])
+          });
+        
     });
 
     res.end();
