@@ -1,10 +1,28 @@
 //This is the main controller for passing on the incoming command to our command list to eventually respond back to the message.
 const ping = require('./ping')
+const repeat = require('./repeat')
 
 module.exports = function(message) {
-    //Ping command
-    if (message.content === '!ping'){
-        res = ping(message.content)
-        message.channel.send(res);
+
+
+    if (message.content.split(" ").length === 1) {
+         //Single Commands, no arguments
+    switch(message.content) {
+        case '!ping': {
+            message.channel.send(ping(message.content));
+            break;
+        }
     }
+    } else {
+        //Complex Commands, multiple arguments
+    switch(message.content.split(" ")[0]) {
+        case '!repeat': {
+            message.channel.send(repeat(message.content));
+            break;
+        }
+    }
+    }
+
+   
+    
 }
