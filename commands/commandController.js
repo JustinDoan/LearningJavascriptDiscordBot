@@ -2,6 +2,7 @@
 const ping = require('./ping')
 const repeat = require('./repeat')
 const votes = require('./votes')
+const flip = require('./flip')
 module.exports = function(message) {
 
 
@@ -17,6 +18,11 @@ module.exports = function(message) {
                 message.channel.send(votes)
             })
             
+        }
+        case '!flip': {
+            //Since we're handling multiple responses, we'll pass the message object into our function.
+            flip(message);
+            break;
         }
     }
     } else {
