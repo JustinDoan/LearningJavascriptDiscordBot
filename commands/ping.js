@@ -1,3 +1,3 @@
 module.exports = function () {
-        return('Pong! Test')  
+        return('The bot has YEETED the ball right back at you.')  
 }

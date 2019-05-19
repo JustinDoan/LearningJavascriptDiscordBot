@@ -3,6 +3,7 @@ const ping = require('./ping')
 const repeat = require('./repeat')
 const votes = require('./votes')
 const flip = require('./flip')
+const jared = require('./jared')
 module.exports = function(message) {
 
 
@@ -12,6 +13,11 @@ module.exports = function(message) {
         case '!ping': {
             message.channel.send(ping(message.content));
             break;
+        }
+        case '!jared' : {
+            message.channel.send(jared(message.content));
+            break;
+
         }
         case '!votes': {
             votes().then((votes) =>{
